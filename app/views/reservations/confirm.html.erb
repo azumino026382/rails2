@@ -1,0 +1,57 @@
+<div class="FormWrapper">
+  <section class="FormContainer">
+    <h2>予約内容の確認</h2>
+    
+    <form class="Form ReservationConfirm" action="/reservations/271" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="L2jQrK/D1anvacYYniTV3Tm9RnfM1LrQMctI5Jmy48zYjTM5fOdfN3eKG+ovxV3tcR3Gpp0unIF3iSpVb3vHWw==">
+      <input type="hidden" value="10" name="reservation[room_id]" id="reservation_room_id">
+      <input type="hidden" value="159" name="reservation[user_id]" id="reservation_user_id">
+      <input type="hidden" value="2023/04/28" name="reservation[start_date]" id="reservation_start_date">
+      <input type="hidden" value="2023/04/29" name="reservation[end_date]" id="reservation_end_date">
+      <input type="hidden" value="2" name="reservation[person_num]" id="reservation_person_num">
+      <div class="ReservationConfirm__value-group">
+        <<p class="ReservationConfirm__label">チェックイン</p>
+        <p class="ReservationConfirm__value"><%= @reservation.start_date %></p>
+      </div>
+
+      <div class="ReservationConfirm__value-group">
+        <p class="ReservationConfirm__label">チェックアウト</p>
+        <p class="ReservationConfirm__value"><%= @reservation.end_date %></p>
+      </div>
+
+      <div class="ReservationConfirm__value-group">
+        <p class="ReservationConfirm__label">日数</p>
+        <p class="ReservationConfirm__value"><%= "#{@reservation.days}日" %></p>
+      </div>
+
+      <div class="ReservationConfirm__value-group">
+        <p class="ReservationConfirm__label">人数</p>
+        <p class="ReservationConfirm__value"><%= "#{@reservation.person_num}人" %></p>
+      </div>
+
+      <div class="ReservationConfirm__value-group">
+        <p class="ReservationConfirm__label">お支払い金額</p>
+        <p class="ReservationConfirm__value ReservationConfirm__value--price"><%= "¥#{@total_price} %></p>
+      </div>
+
+      <p class="ReservationConfirm__description">
+        上記内容で正しければ「確定」ボタンを押してください。
+      </p>
+      <%= form.submit "予約を確定" %>
+      <%= form.submit "修正", name: :back %>
+      <input type="submit" name="commit" value="予約を確定" class="btn ReservationConfirm__button ReservationConfirm__button--submit" data-disable-with="予約を確定">
+    
+      </form>
+    <%=form_with model: @reservation do |form| %>  
+      <%= form.hidden_field :room_id, value:params[:room_id], class:'ReservationConfirm__value' %>
+      <%= form.hidden_field :user_id, , value:@current_user.id, class:'ReservationConfirm__value' %>●ログインしている変数の書き方
+      <%= form.hidden_field :start_date, value:@reservation.start_date, class:'ReservationConfirm__value' %>
+      <%= form.hidden_field :end_date, value:@reservation.end_date, class:'ReservationConfirm__value' %>
+      <%= form.hidden_field :person_num, value:@reservation.days, class:'ReservationConfirm__value' %>
+      <%= form.hidden_field :person_num, value:@reservation.person_num, class:'ReservationConfirm__value' %>
+      <%= form.hidden_field :total_price, value:@total_price, class:'ReservationConfirm__value' %>
+                
+    <% end %>
+    <%= link_to("キャンセル", room_path)%>
+    <a class="btn ReservationConfirm__button ReservationConfirm__button--cancel" href="/rooms/10">キャンセル</a>
+  </section>
+</div>

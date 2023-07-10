@@ -1,0 +1,84 @@
+<% @reservations.each do |reservation| %>
+    <% room = Room.find_by(id: reservation.room_id) %>
+
+  <div class="container ReservationsContainer">
+    <h2>
+      予約済み一覧
+    </h2>
+  
+    <div class="table-responsive">
+      <table class="table align-middle ReservationsTable">
+        <thead>
+          <tr>
+            <th>画像</th>
+            <th>施設名</th>
+            <th>紹介文</th>
+            <th class="text-nowrap">合計料金</th>
+            <th class="text-nowrap">チェックイン</th>
+            <th class="text-nowrap">チェックアウト</th>
+            <th class="text-nowrap">予約確定日時</th>
+            <th></th>
+          </tr>
+        </thead>
+  
+        <tbody>
+            <tr>
+              <td>
+              </td>
+  
+              <td>
+                <%= link_to(room.room_name, room_path) %>
+              </td>
+  
+              <td>
+                <%= room.content %>
+              </td>
+  
+              <td class="text-nowrap">
+                <%= "\#{room.price}" %>
+              </td>
+  
+              <td class="text-nowrap">
+                <%= reservation.start_date %>
+              </td>
+  
+              <td class="text-nowrap">
+                <%= reservation.end_date %>
+              </td>
+  
+              <td class="text-nowrap">
+                <%= reservation.created_at %>
+              </td>
+  
+              <td>
+                <div class="dropdown">
+                  <div class="d-flex align-items-center justify-content-center" id="dropdown-button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img alt="3点メニューアイコン" src="/assets/icons/three-dot-menu-0c042cde96cc73e058e97d09a24944eb2914eb8c152d418dc6fc6964251fdaa2.svg">
+                  </div>
+  
+                  <ul class="dropdown-menu DropdownMenu" aria-labelledby="dropdown-button">
+                    <li class="DropdownMenu__item">
+                      <a href="/reservations/271/edit">再予約</a>
+                    </li>
+  
+                    <li class="DropdownMenu__item DropdownMenu__item--danger">
+                      <a title="以下の施設を削除しますか？" data-confirm="<div class='ConfirmBody'>
+                                                <img class=&quot;ConfirmBody__image&quot; src=&quot;/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png&quot; />
+                                                <div>
+                                                  プリンスホテル<br>
+                                                  2023/04/28&amp;nbsp;〜&amp;nbsp;2023/04/29<br>
+                                                  1人<br>
+                                                  ¥&amp;nbsp;18,000
+                                                </div>
+                                              </div>
+                                              よろしければ「削除」ボタンを押してください。" data-commit="削除" data-cancel="キャンセル" rel="nofollow" data-method="delete" href="/reservations/271">予約を削除</a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>  
