@@ -11,10 +11,18 @@ class ReservationsController < ApplicationController
   end
 
   def confirm
-    @reservation = Reservation.new(params.require(:reservations).permit(:start_date, :end_date, :person_num))
-    @days = (@reservation.end_date - @reservation.start_date).to_i
-    @total_price = @room.price * @reservation.person_num * @days
-    render :new if @reservation.invalid?
+    
+    
+    @reservation = Reservation.new(params.require(:reservation).permit(:start_date, :end_date, :person_num))
+  
+    
+    
+   
+    @reservation.days = (@reservation.end_date - @reservation.start_date).to_i
+ 
+    
+  
+  #  render template: "rooms/show" if @reservation.invalid?
   end
 
   def create
