@@ -15,12 +15,11 @@ class ReservationsController < ApplicationController
     
     @reservation = Reservation.new(params.require(:reservation).permit(:start_date, :end_date, :person_num))
   
-    
-    
-   
     @reservation.days = (@reservation.end_date - @reservation.start_date).to_i
  
-    
+    @room = Room.find(params[:@reservation.room_id])
+
+    @reservation.total_price = (@room.price * @reservation.person_num * @reservation.days).to_i
   
   #  render template: "rooms/show" if @reservation.invalid?
   end
