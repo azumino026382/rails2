@@ -9,6 +9,7 @@ class RoomsController < ApplicationController
   
   def create
     @room = Room.new(params.require(:room).permit(:image_room, :room_name, :content, :price, :address))
+    
     if @room.save
       flash[:notice] = "施設を新規登録しました"
       redirect_to rooms_path
@@ -19,6 +20,7 @@ class RoomsController < ApplicationController
   
   def show
     @room = Room.find(params[:id])
+    @reservation = Reservation.new
   end
 
   def edit
