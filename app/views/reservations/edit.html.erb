@@ -11,7 +11,7 @@
   <% end %>
   
 
-  <div class="FormWrapper">
+<div class="FormWrapper">
   <section class="FormContainer">
     <h2>再予約する</h2>
 
@@ -33,12 +33,12 @@
       </span>
 
       <span class="Room__stars">
-  <img alt="スターアイコン" src="/assets/room/star-1544f5d9e9846039b88b7afca69bdd007b6a36405fbbbfaf4e1faba106f5a0b4.svg">
-  <img alt="スターアイコン" src="/assets/room/star-1544f5d9e9846039b88b7afca69bdd007b6a36405fbbbfaf4e1faba106f5a0b4.svg">
-  <img alt="スターアイコン" src="/assets/room/star-1544f5d9e9846039b88b7afca69bdd007b6a36405fbbbfaf4e1faba106f5a0b4.svg">
-  <img alt="スターアイコン" src="/assets/room/star-1544f5d9e9846039b88b7afca69bdd007b6a36405fbbbfaf4e1faba106f5a0b4.svg">
-  <img alt="スターアイコン" src="/assets/room/star-1544f5d9e9846039b88b7afca69bdd007b6a36405fbbbfaf4e1faba106f5a0b4.svg">
-</span>
+        <img alt="スターアイコン" src="/assets/room/star-1544f5d9e9846039b88b7afca69bdd007b6a36405fbbbfaf4e1faba106f5a0b4.svg">
+        <img alt="スターアイコン" src="/assets/room/star-1544f5d9e9846039b88b7afca69bdd007b6a36405fbbbfaf4e1faba106f5a0b4.svg">
+        <img alt="スターアイコン" src="/assets/room/star-1544f5d9e9846039b88b7afca69bdd007b6a36405fbbbfaf4e1faba106f5a0b4.svg">
+        <img alt="スターアイコン" src="/assets/room/star-1544f5d9e9846039b88b7afca69bdd007b6a36405fbbbfaf4e1faba106f5a0b4.svg">
+        <img alt="スターアイコン" src="/assets/room/star-1544f5d9e9846039b88b7afca69bdd007b6a36405fbbbfaf4e1faba106f5a0b4.svg">
+      </span>
 
       <p class="ReservationDetails__room-content">
         <%= room.content %>
@@ -51,39 +51,39 @@
       <input type="hidden" name="reservation[room_id]" id="reservation_room_id" value="10">
 
       <div class="ReservationsForm__input-group">
-      <%= f.label :start_date %>
-      <%= f.text_field :start_date %>
-        <label class="form-label ReservationsForm__label Form__label--required" for="reservation_start_date">チェックイン</label>
+        <%= f.label :start_date %>
+        <%= f.text_field :start_date %>
+          <label class="form-label ReservationsForm__label Form__label--required" for="reservation_start_date">チェックイン</label>
 
-        <input value="2023/04/28" class="form-control js-picker" placeholder="---- / -- / --" type="text" name="reservation[start_date]" id="reservation_start_date" data-dtp="dtp_OYcat">
+          <input value="2023/04/28" class="form-control js-picker" placeholder="---- / -- / --" type="text" name="reservation[start_date]" id="reservation_start_date" data-dtp="dtp_OYcat">
         
       </div>
 
       <div class="ReservationsForm__input-group">
-      <%= f.label :end_date %>
-      <%= f.text_field :end_date %>  
-        <label class="form-label ReservationsForm__label Form__label--required" for="reservation_end_date">チェックアウト</label>
+        <%= f.label :end_date %>
+        <%= f.text_field :end_date %>  
+          <label class="form-label ReservationsForm__label Form__label--required" for="reservation_end_date">チェックアウト</label>
 
-        <input value="2023/04/29" class="form-control js-picker" placeholder="---- / -- / --" type="text" name="reservation[end_date]" id="reservation_end_date" data-dtp="dtp_KXCmm">
+          <input value="2023/04/29" class="form-control js-picker" placeholder="---- / -- / --" type="text" name="reservation[end_date]" id="reservation_end_date" data-dtp="dtp_KXCmm">
         
       </div>
 
       <div class="ReservationsForm__input-group ReservationsForm__input-group--person-count">
-      <%= f.label :person_num %>
-      <%= f.text_field :person_num %>
+        <%= f.label :person_num %>
+        <%= f.text_field :person_num %>
 
 
-        <label class="form-label ReservationsForm__label Form__label--required" for="reservation_person_num">人数</label>
+          <label class="form-label ReservationsForm__label Form__label--required" for="reservation_person_num">人数</label>
 
-        <input class="form-control ReservationsForm__input ReservationsForm__input--person-count" placeholder="0" type="number" value="1" name="reservation[person_num]" id="reservation_person_num">
+          <input class="form-control ReservationsForm__input ReservationsForm__input--person-count" placeholder="0" type="number" value="1" name="reservation[person_num]" id="reservation_person_num">
         
-        <span>人</span>
+          <span>人</span>
       </div>
       <%= f.submit "予約する" %>
       
       <input type="submit" name="commit" value="再予約する" class="btn ReservationsForm__button ReservationsForm__button--submit" data-disable-with="再予約する">
-</form>
-<% end %>
+    </form>
+    <% end %>
     <a class="btn ReservationsForm__button ReservationsForm__button--cancel" href="https://rails-02-sample.herokuapp.com/reservations">キャンセル</a>
   </section>
 </div>

@@ -2,7 +2,7 @@
   <section class="FormContainer">
     <h2>新規登録</h2>
     <%=form_with model: @room do |form| %>
-      <form class="">
+      
         <div class="RoomsForm__input-group">
           <%= form.label :room_name ,"施設名" %>
           <div class="RoomsForm__input">
@@ -39,7 +39,7 @@
 
       
         <%= form.submit "保存" %>
-      </form>
+      
     <% end %>
     <%= link_to "キャンセル", rooms_path %>
   </section>

@@ -12,21 +12,14 @@ class ReservationsController < ApplicationController
 
   def confirm
     
-    
     @reservation = Reservation.new(params.require(:reservation).permit(:start_date, :end_date, :person_num))
   
     @reservation.days = (@reservation.end_date - @reservation.start_date).to_i
- 
-    @room = Room.find(params[:@reservation.room_id])
-
-    @reservation.total_price = (@room.price * @reservation.person_num * @reservation.days).to_i
   
-  #  render template: "rooms/show" if @reservation.invalid?
   end
 
   def create
-#    @reservation = current_user.reservations.create(reservation_params)
-#    redirect_to room_reservations_path notice:"予約が完了しました"
+
     @reservation = Reservation.new(params.require(:reservation).permit(:start_date, :end_date, :person_num, :room_id, :user_id, :days, :total_price))  #  ●モデルに定義するのこれでいいのか？モデルの定義必要なカラムとSQLの書き方とlikeテーブル
     if params[:back] || !@reservation.save
       render "new" and return
